@@ -1,3 +1,4 @@
+
 /**
  * An asynchronous function that sums all numbers in a 2D array
  * @param arr 2D array of numbers
@@ -37,8 +38,12 @@ const array2D = [
     [7, 8, 9]
 ];
 
-const sumPromise1 = sum2DArray(array2D);
-console.log('sumPromise1:', sumPromise1);
 
-const sumPromise2 = sum2DArray([]);
-console.log('sumPromise2:', sumPromise2);
+const sp1 = sum2DArray(array2D);
+sp1.then((res) => console.log(res))
+    .catch((err) => console.log(err));
+
+const sp2 = sum2DArray([]);
+sp2.then((res) => console.log(res))
+    .catch((err) => console.log(err));
+

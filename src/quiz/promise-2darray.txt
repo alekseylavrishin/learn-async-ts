@@ -1,4 +1,12 @@
 - Extract the code in the setTimeout function and replace the setTimeout function  with the extracted code. Then run the main script. 
 - Is there a difference in the flow of execution from when the code was in the setTimeout function?
+
+setTimeout is an asynchronous function that delays any code stored in itself for a specified amount of time.
+When using setTimeout, with the 'timeout' value set to 0, the code executes 'immediately', but in the next event cycle.
+As setTimeout is asynchronous, it does not pause execution of the rest of the program while waiting for the next event cycle.
+This is why the 'returning from sum' log message (executing in the current event cycle) plays before the
+'Adding ${i} to sum' message (executing in the upcoming event cycle).
+
+
 - Is the flow of execution in both these examples different from the flow of execution with the examples using the fetch() API, which also returns a promise? 
 - If yes, explain the code execution difference. Add your explanation to this file.
