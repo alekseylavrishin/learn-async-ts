@@ -3,10 +3,19 @@
 
 setTimeout is an asynchronous function that delays any code stored in itself for a specified amount of time.
 When using setTimeout, with the 'timeout' value set to 0, the code executes 'immediately', but in the next event cycle.
-As setTimeout is asynchronous, it does not pause execution of the rest of the program while waiting for the next event cycle.
-This is why the 'returning from sum' log message (executing in the current event cycle) plays before the
-'Adding ${i} to sum' message (executing in the upcoming event cycle).
+As setTimeout is asynchronous, it does not pause execution of the rest of the program while waiting for the next event cycle to occur.
+Since the remainder of the code in the current event cycle must proceed before the code stored in setTimeout can execute,
+the 'Sum called... returning from sum' log messages (executing in the current event cycle) are returned to the console
+before the 'Adding ${i} to sum' message (executing in the upcoming event cycle).
+
+If the code is extracted from setTimeout, the entirety of the sum2dArray function executes synchronously, resulting in the sum calculations
+to be returned to the console immediately.
 
 
-- Is the flow of execution in both these examples different from the flow of execution with the examples using the fetch() API, which also returns a promise? 
+- Is the flow of execution in both these examples different from the flow of execution with the examples using the fetch() API, which also returns a promise?
 - If yes, explain the code execution difference. Add your explanation to this file.
+
+The overall flow of execution between fetch() and the sum2dArray function with setTimeout() is similar as they both execute asynchronously by executing
+part of their code in a later event loop.
+However, the flow of execution of sum2dArray without setTimeout() differs from fetch() as sum2dArray executes all
+of its code synchronously, in the same event loop, inside the Promise constructor.
